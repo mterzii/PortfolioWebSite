@@ -87,12 +87,12 @@ document
             .sendForm("service_u4zvqae", "template_pm5gjfl", this)
             .then(
                 function () {
-                    alert("Message sent successfully! 😊");
+                    alert("Mesaj Gönderildi! 😊");
                     document.getElementById("contact-form").reset(); // Formu temizle
                 },
                 function (error) {
                     console.error("FAILED...", error);
-                    alert("Message failed to send ❌");
+                    alert("Mesaj gönderilemedi ❌");
                 }
             );
     });

@@ -1,0 +1,40 @@
+// Font
+$font-family-sans-serif: 'Poppins', sans-serif;
+
+$primary:   #cc0057;
+$secondary: #990047;
+$dark:      #000;
+$light:     #f4f4f4;
+
+// Buttons
+$button-radius: 0;
+$button-padding-x: 30px;
+$button-padding-y: 12px;
+
+$btn-border-radius:    $button-radius;
+$btn-border-radius-sm: $button-radius;
+$btn-border-radius-lg: $button-radius;
+
+$btn-padding-y:    $button-padding-y;
+$btn-padding-y-lg: $button-padding-y;
+$btn-padding-y-sm: $button-padding-y;
+
+$btn-padding-x:    $button-padding-x;
+$btn-padding-x-lg: $button-padding-x;
+$btn-padding-x-sm: $button-padding-x;
+
+
+
+// Container
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 980px,
+  xxl: 1000px,
+) !default;
+
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+

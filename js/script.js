@@ -1,3 +1,4 @@
+// === TYPING EFFECT ===
 function runTypingEffect() {
     const text = 'I am Mert Terzi';
     const typingElement = document.getElementById('typing-text');
@@ -25,31 +26,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!ring || slides.length === 0) return;
 
     const total = slides.length;
-
-    // 🔹 Ekran genişliğine göre ayar yapalım
     let radius, rotateSpeed;
+
     if (window.innerWidth <= 776) {
-        radius = 270;       // 🔸 Telefonlarda daha küçük halka
-        rotateSpeed = 0.05; // 🔸 Daha yavaş dönüş
+        radius = 270;
+        rotateSpeed = 0.05;
     } else {
-        radius = 600;       // 🔹 Normal ekranlarda
-        rotateSpeed = 0.08; // 🔹 Orta hız
+        radius = 600;
+        rotateSpeed = 0.08;
     }
 
     const autoRotate = true;
 
-    // Görselleri halka çevresine yerleştir
     slides.forEach((slide, i) => {
         const angle = (360 / total) * i;
         slide.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-    });
-
-    // Dönüşleri yumuşat
-    slides.forEach((slide) => {
         slide.style.transition = "transform 0.8s ease";
     });
 
-    // Sürekli dönme efekti
     if (autoRotate) {
         let rotation = 0;
         gsap.ticker.add(() => {
@@ -58,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Lightbox ayarları (animasyonlar)
     if (window.lightbox) {
         lightbox.option({
             resizeDuration: 300,
@@ -70,29 +63,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// === EMAILJS ===
-
-// EmailJS'i başlat
+// === EMAILJS + SPAM KORUMA ===
 (function () {
-    emailjs.init("cxLgeHHhYW-P6KiWB"); // Senin public key'in
+    emailjs.init("cxLgeHHhYW-P6KiWB"); // Public key
 })();
 
-// Formu dinle
-document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (event) {
-        event.preventDefault(); // Sayfa yenilenmesin
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+    event.preventDefault();
 
-        emailjs
-            .sendForm("service_u4zvqae", "template_pm5gjfl", this)
-            .then(
-                function () {
-                    alert("Mesaj Gönderildi! 😊");
-                    document.getElementById("contact-form").reset(); // Formu temizle
-                },
-                function (error) {
-                    console.error("FAILED...", error);
-                    alert("Mesaj gönderilemedi ❌");
-                }
-            );
-    });
+    // 🔹 1. Honeypot kontrolü
+    const honeypot = document.querySelector('[name="website"]');
+    if (honeypot && honeypot.value !== "") {
+        console.warn("Spam detected (honeypot filled)");
+        return;
+    }
+
+    // 🔹 2. reCAPTCHA kontrolü
+    if (typeof grecaptcha !== "undefined" && grecaptcha.getResponse() === "") {
+        alert("Please confirm you are not a robot 🤖");
+        return;
+    }
+
+    // 🔹 3. EmailJS gönderimi
+    emailjs.sendForm("service_u4zvqae", "template_pm5gjfl", this).then(
+        function () {
+            alert("Message sent successfully! ✅");
+            document.getElementById("contact-form").reset();
+            if (typeof grecaptcha !== "undefined") grecaptcha.reset();
+        },
+        function (error) {
+            console.error("FAILED...", error);
+            alert("Message could not be sent ❌");
+        }
+    );
+});

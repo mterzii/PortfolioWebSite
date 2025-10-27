@@ -1,13 +1,13 @@
 @charset "UTF-8";
 .header {
   /*------------Foto değiştirelecek ------------*/
-  background: #151515 url("../images/1.jpeg") no-repeat center center;
+  background: #151515 url('../images/1.jpeg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .header::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +21,7 @@
 }
 
 .header .roles {
-  font-family: "lora-regular", serif;
+  font-family: 'lora-regular', serif;
 }
 
 .header .social {
@@ -70,7 +70,14 @@
 
 /* Instagram hover */
 .social a:hover .fa-instagram {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -149,13 +156,25 @@
 
 /* Fade kenar efekti */
 .ls-curved-carousel.fadeout {
-  -webkit-mask-image: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-  mask-image: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
 }
 
 /* === Services Section Background === */
 .services {
-  background: url("../images/alev.jpg") no-repeat center center;
+  background: url('../images/alev.jpg') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   position: relative; /* ::after için konum referansı oluşturur */
@@ -164,7 +183,7 @@
 
 /* Karanlık overlay (yazıları öne çıkarmak için) */
 .services::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -198,4 +217,9 @@ select:focus {
   outline: none !important;
   box-shadow: none !important;
   border-color: inherit !important;
+}
+
+.g-recaptcha {
+  display: flex;
+  justify-content: center;
 }

@@ -97,3 +97,29 @@ document.getElementById("contact-form").addEventListener("submit", function (eve
         }
     );
 });
+
+
+/*Modal İçin */
+
+document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('click', function () {
+
+    document.getElementById('modalTitle').textContent =
+      this.getAttribute('data-title');
+
+    document.getElementById('modalDescription').textContent =
+      this.getAttribute('data-description');
+
+    document.getElementById('modalTech').textContent =
+      this.getAttribute('data-tech');
+
+    document.getElementById('modalImage').src =
+      this.getAttribute('data-image');
+
+    document.getElementById('modalGithub').href =
+      this.getAttribute('data-github');
+
+    let modal = new bootstrap.Modal(document.getElementById('projectModal'));
+    modal.show();
+  });
+});

@@ -223,3 +223,13 @@ select:focus {
   display: flex;
   justify-content: center;
 }
+
+.skills {
+  width: 100%;
+}
+.modal-img-big {
+  width: 100%;
+  max-width: 650px; /* daha da büyük istiyorsan 750 yap */
+  height: auto;
+  object-fit: contain;
+}

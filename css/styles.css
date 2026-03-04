@@ -1,9 +1,20 @@
 @charset "UTF-8";
 .header {
-  /*------------Foto değiştirelecek ------------*/
   background: #151515 url('../images/1.jpeg') no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  /* Mobilde netlik için fixed özelliğini devre dışı bırakıyoruz */
+  background-attachment: scroll;
+  position: relative;
+}
+
+/* Mobil cihazlar için özel ayar */
+@media (max-width: 768px) {
+  .header {
+    /* Fotoğrafın mobilde çok fazla zoom yapmasını engellemek için */
+    background-attachment: scroll !important;
+    background-position: 70% center; /* Fotoğraftaki ana objeyi (seni) merkeze almak için yüzdeyle oynayabilirsin */
+    height: 100vh; /* Yüksekliği garantiye al */
+  }
 }
 
 /* --- Global Fixes --- */
